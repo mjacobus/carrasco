@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "simple_build"
+
+file = ""
+SimpleBuild::CommandBuilder.new.from_file(file).start(ARGV)
