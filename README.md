@@ -1,13 +1,13 @@
-# SimpleBuild
+# Carrasco
 
-Execution of scripts made easy
+Heartless and easy script execution
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'simple_build'
+gem 'carrasco'
 ```
 
 And then execute:
@@ -16,38 +16,40 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install simple_build
+    $ gem install carrasco
 
 ## Usage
 
 Given you have a config file like the following in the root of your project:
 
 ```yaml
-# .simple_build.yml
+# .carrasco.yml
 
 commands:
 
+  test:
+    help: test
+    description: execute ruby tests
+    command: rake test
+
   phpunit:
+    help: phpunit
+    description: execute php tests
     command: ./bin/vendor/phpunit --configuration=tests/phpunit.xml
 
-  phpcs:
-    command: ./bin/vendor/php-cs-fixer fix --level=psr2 lib
-
-  sass:
-    command: grunt sass
-
+# to be implemented
 groups:
   qa:
+    - test
     - phpunit
-    - phpcs
 ```
 
 You can execute:
 
 ```bash
-simple_build all     # all your tasks
-simple_build phpunit # phpunit only
-simple_build qa      # all qa scripts
+carrasco all     # all your tasks
+carrasco phpunit # phpunit only
+carrasco qa      # all qa scripts
 ```
 
 ## Development
@@ -58,7 +60,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/mgjacobus/simple_build. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/mgjacobus/carrasco. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License

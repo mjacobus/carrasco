@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "carrasco"
+require 'yaml'
+
+expected_file = "#{Dir.pwd}/.carrasco.yml"
+config = YAML.load_file(expected_file)
+
+Carrasco::CommandBuilder.new.from_config(config).start(ARGV)
