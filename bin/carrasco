@@ -2,6 +2,9 @@
 
 require "bundler/setup"
 require "simple_build"
+require 'yaml'
 
-file = ""
-SimpleBuild::CommandBuilder.new.from_file(file).start(ARGV)
+expected_file = "#{Dir.pwd}/.carrasco.yml"
+config = YAML.load_file(expected_file)
+
+SimpleBuild::CommandBuilder.new.from_config(config).start(ARGV)
