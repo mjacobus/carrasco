@@ -1,6 +1,6 @@
 require "thor"
 
-module SimpleBuild
+module Carrasco
   class CommandBuilder
     def from_config(config)
       klass = Class.new(Thor)

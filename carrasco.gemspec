@@ -1,17 +1,17 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'simple_build/version'
+require 'carrasco/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "simple_build"
-  spec.version       = SimpleBuild::VERSION
+  spec.name          = "carrasco"
+  spec.version       = Carrasco::VERSION
   spec.authors       = ["Marcelo Jacobus"]
   spec.email         = ["marcelo.jacobus@gmail.com"]
 
-  spec.summary       = %q{Simple builder}
-  spec.description   = %q{Simple builder}
-  spec.homepage      = "https://github.com/mjacobus/simple_build"
+  spec.summary       = %q{Command executor}
+  spec.description   = %q{Command executor}
+  spec.homepage      = "https://github.com/mjacobus/carrasco"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or

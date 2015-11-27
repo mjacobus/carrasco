@@ -1,6 +1,6 @@
 require 'test_helper'
 
-require "simple_build/command"
+require "carrasco/command"
 
 class CommandHandlerTest < Minitest::Test
   def setup
@@ -16,8 +16,8 @@ class CommandHandlerTest < Minitest::Test
   private
 
   def handle(command)
-    command = SimpleBuild::Command.new(command: command)
-    SimpleBuild::CommandHandler.new.handle(command)
+    command = Carrasco::Command.new(command: command)
+    Carrasco::CommandHandler.new.handle(command)
   end
 
   def test_file

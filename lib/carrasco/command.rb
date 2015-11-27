@@ -1,4 +1,4 @@
-module SimpleBuild
+module Carrasco
   class Command
     def initialize(options = {})
       @options = {}
