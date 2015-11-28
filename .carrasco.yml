@@ -1,0 +1,17 @@
+commands:
+
+  test:
+    help: test
+    description: execute ruby tests
+    command: rake test
+
+  phpunit:
+    help: phpunit
+    description: execute php tests
+    command: ./bin/vendor/phpunit --configuration=tests/phpunit.xml
+
+# to be implemented
+groups:
+  qa:
+    - test
+    - phpunit
