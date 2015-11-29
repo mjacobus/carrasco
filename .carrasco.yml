@@ -10,6 +10,11 @@ commands:
     description: execute php tests
     command: ./bin/vendor/phpunit --configuration=tests/phpunit.xml
 
+  ls:
+    help: ls
+    description: ls /tmp folder
+    command: ls /tmp
+
 # to be implemented
 groups:
   qa:

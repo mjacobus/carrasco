@@ -6,19 +6,20 @@ module Carrasco
       klass = Class.new(Thor)
 
       config['commands'].each do |method, options|
-        help        = options.fetch('help')
-        description = options.fetch('description')
-        command     = options.fetch('command')
-
-        klass.class_eval do
-          desc help, description
-          define_method (method) do
-            system(command)
-          end
-        end
+        command = Command.new(method, options)
+        inject_command_into_class(command, klass)
       end
 
       klass
+    end
+
+    def inject_command_into_class(command, klass)
+      klass.desc(command.help, command.description)
+      klass.class_eval do
+        define_method(command.command_name) do
+          system(command.command)
+        end
+      end
     end
   end
 end

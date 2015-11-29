@@ -1,0 +1,16 @@
+checks:
+  ruby:
+    code_rating: true
+    duplicate_code: true
+
+build:
+  tests:
+    override:
+      -
+        command: 'bundle exec rake test:scrutinizer'
+        environment:
+          'SCRUTINIZER_CC_FILE': 'my-coverage'
+          ruby: '2.2.0'
+        coverage:
+          file: 'my-coverage'
+          format: 'rb-cc'

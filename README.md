@@ -2,6 +2,13 @@
 
 Heartless and easy script execution
 
+[![Build Status](https://travis-ci.org/mjacobus/carrasco.svg)](https://travis-ci.org/mjacobus/carrasco)
+[![Code Coverage](https://scrutinizer-ci.com/g/mjacobus/carrasco/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mjacobus/carrasco/?branch=master)
+[![Code Climate](https://codeclimate.com/github/mjacobus/carrasco/badges/gpa.svg)](https://codeclimate.com/github/mjacobus/carrasco)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mjacobus/carrasco/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mjacobus/carrasco/?branch=master)
+[![Dependency Status](https://gemnasium.com/mjacobus/carrasco.svg)](https://gemnasium.com/mjacobus/carrasco)
+[![Gem Version](https://badge.fury.io/rb/carrasco.svg)](https://badge.fury.io/rb/carrasco)
+
 ## Installation
 
 Add this line to your application's Gemfile:
