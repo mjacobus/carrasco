@@ -56,9 +56,10 @@ groups:
 You can execute:
 
 ```bash
-carrasco all     # all your tasks
-carrasco phpunit # phpunit only
-carrasco qa      # all qa scripts
+bundle exec carrasco         # list commands
+bundle exec carrasco all     # all your tasks
+bundle exec carrasco phpunit # phpunit only
+bundle exec carrasco qa      # all qa scripts
 ```
 
 ## Development
