@@ -35,14 +35,16 @@ Given you have a config file like the following in the root of your project:
 commands:
 
   test:
-    help: test
     description: execute ruby tests
     command: rake test
 
   phpunit:
-    help: phpunit
     description: execute php tests
     command: ./bin/vendor/phpunit --configuration=tests/phpunit.xml
+
+  clear_cache:
+    description: Clears the application cache
+    command: rm -rf ./app/cache
 
 # to be implemented
 groups:

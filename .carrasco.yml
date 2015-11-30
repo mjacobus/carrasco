@@ -11,9 +11,8 @@ commands:
     command: ./bin/vendor/phpunit --configuration=tests/phpunit.xml
 
   ls:
-    help: ls
-    description: ls /tmp folder
-    command: ls /tmp
+    description: List tmp file
+    command: ls /tmp/foo/foo
 
 # to be implemented
 groups:
