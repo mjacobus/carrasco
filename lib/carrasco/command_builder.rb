@@ -1,5 +1,3 @@
-require "thor"
-
 module Carrasco
   class CommandBuilder
     def from_config(config)
@@ -17,7 +15,7 @@ module Carrasco
       klass.desc(command.help, command.description)
       klass.class_eval do
         define_method(command.command_name) do
-          system(command.command)
+          execute_command(command.command)
         end
       end
     end
