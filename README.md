@@ -3,7 +3,7 @@
 Heartless and easy script execution
 
 [![Build Status](https://travis-ci.org/mjacobus/carrasco.svg)](https://travis-ci.org/mjacobus/carrasco)
-[![Code Coverage](https://scrutinizer-ci.com/g/mjacobus/carrasco/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/mjacobus/carrasco/?branch=master)
+[![Coverage Status](https://coveralls.io/repos/mjacobus/carrasco/badge.svg?branch=master&service=github)](https://coveralls.io/github/mjacobus/carrasco?branch=master)
 [![Code Climate](https://codeclimate.com/github/mjacobus/carrasco/badges/gpa.svg)](https://codeclimate.com/github/mjacobus/carrasco)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mjacobus/carrasco/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/mjacobus/carrasco/?branch=master)
 [![Dependency Status](https://gemnasium.com/mjacobus/carrasco.svg)](https://gemnasium.com/mjacobus/carrasco)
