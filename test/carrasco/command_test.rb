@@ -19,8 +19,17 @@ class CommandTest < Minitest::Test
     assert_equal "the_command", command.help
   end
 
-  def test_help_defaults_to_command_name
+  def test_description_has_default
     command = Carrasco::Command.new "the_command"
     assert_equal "description not given", command.description
   end
-end
+
+  def test_command_defaults_to_command_name
+    command = Carrasco::Command.new "command_name"
+    assert_equal "command_name", command.command
+  end
+
+  def test_command_to_string_returns_command
+    command = Carrasco::Command.new "command_name", command: "command"
+    assert_equal "command", command.to_s
+  end end
