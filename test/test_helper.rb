@@ -12,7 +12,6 @@ end
 if ENV['COVERALLS']
   require "coveralls"
   Coveralls.wear!
-  simplecov
 end
 
 if ENV['COVERAGE']
