@@ -1,5 +1,4 @@
 $LOAD_PATH.unshift File.expand_path('../../lib', __FILE__)
-require 'carrasco'
 
 def simplecov
   require "simplecov"
@@ -23,8 +22,8 @@ end
 if ENV['SCRUTINIZER']
   require "scrutinizer/ocular"
   Scrutinizer::Ocular.watch!
-  simplecov
 end
 
+require 'carrasco'
 require 'minitest/autorun'
 require 'mocha/mini_test'
