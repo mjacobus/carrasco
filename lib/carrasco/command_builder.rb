@@ -15,7 +15,7 @@ module Carrasco
       klass.desc(command.help, command.description)
       klass.class_eval do
         define_method(command.command_name) do
-          execute_command(command.command)
+          execute_command(command)
         end
       end
     end

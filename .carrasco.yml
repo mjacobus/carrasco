@@ -12,8 +12,12 @@ commands:
 
   ls:
     help: ls
-    description: ls /tmp folder
+    description: lists /tmp folder
     command: ls /tmp
+
+  ls_with_error:
+    description: list folder that does not exist
+    command: ls /tmp/file_that_does_not_exist
 
 # to be implemented
 groups:
