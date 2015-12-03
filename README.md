@@ -49,8 +49,10 @@ commands:
 # to be implemented
 groups:
   qa:
-    - test
-    - phpunit
+    desc: Runs qa tools
+    commands:
+      - test
+      - phpunit
 ```
 
 You can execute:
