@@ -9,3 +9,5 @@ rvm:
   - 2.2
 
 sudo: false
+
+script: ./exe/carrasco test
