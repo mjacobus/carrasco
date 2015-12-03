@@ -6,9 +6,14 @@ class CommandExecuter < Minitest::Test
   end
 
   def test_returns_exit_code
-    assert handle("ls /tmp/foo 2&> /dev/null") > 0
-    assert_equal 0, handle("touch #{test_file}")
-    assert File.exist?(test_file)
+    assert execute("ls /tmp/file_that_does_not_exist 2&> /dev/null") > 0,
+      "failed command returns non zero"
+
+    assert_equal 0, execute("touch #{test_file}"),
+      "success command returns zero"
+
+    assert File.exist?(test_file),
+      "file was created"
   end
 
   def test_execute_bang_throws_exception_when_command_fails
@@ -25,7 +30,7 @@ class CommandExecuter < Minitest::Test
 
   private
 
-  def handle(command)
+  def execute(command)
     command = Carrasco::Command.new(command)
     Carrasco::CommandExecuter.new.execute(command)
   end
