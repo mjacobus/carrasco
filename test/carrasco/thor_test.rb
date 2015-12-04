@@ -1,6 +1,10 @@
 require "test_helper"
 
 class ThorTest < Minitest::Test
+  def setup
+    subject.command_executer = nil
+  end
+
   def test_executes_command
     skip
   end
@@ -10,6 +14,13 @@ class ThorTest < Minitest::Test
     object = stub
     subject.command_executer = object
     assert_same object, subject.command_executer
+  end
+
+  def test_can_execute_commands
+    executer = stub
+    executer.expects(:execute!).with("foo")
+    subject.command_executer = executer
+    subject.execute_command("foo")
   end
 
   private

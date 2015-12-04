@@ -1,6 +1,9 @@
+require "thor/core_ext/hash_with_indifferent_access"
+
 module Carrasco
   class CommandBuilder
     def from_config(config)
+      config = Thor::CoreExt::HashWithIndifferentAccess.new(config)
       klass = Class.new(Thor)
 
       config['commands'].each do |method, options|

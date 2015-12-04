@@ -10,11 +10,13 @@ class CommandBuilderTest < Minitest::Test
   end
 
   def test_defines_command_in_the_class
-    klass = Class.new(::Thor)
+    klass = Carrasco::CommandBuilder.new.from_config(config)
 
-    Carrasco::CommandBuilder.new.inject_command_into_class(command, klass)
+    assert klass.new.respond_to?(:command1)
+  end
 
-    assert klass.new.respond_to?(:command_name)
+  def test_from_config_creates_commands
+    klass = Carrasco::CommandBuilder.new.from_config(config)
   end
 
   private
@@ -26,5 +28,16 @@ class CommandBuilderTest < Minitest::Test
       "description"  => "the_description",
       "help"         => "the_help"
     })
+  end
+
+  def config
+    {
+      commands: {
+        command1: {
+          description: "desc",
+          command: "ls /tmp",
+        }
+      }
+    }
   end
 end
