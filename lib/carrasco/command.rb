@@ -12,5 +12,15 @@ module Carrasco
       @help         = options[:help] || command_name
       @description  = options[:description] || "description not given"
     end
+
+    def inject_into_class(klass)
+      command = self
+      klass.desc(help, description)
+      klass.class_eval do
+        define_method(command.command_name) do
+          execute_command(command)
+        end
+      end
+    end
   end
 end

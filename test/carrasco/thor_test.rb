@@ -23,9 +23,58 @@ class ThorTest < Minitest::Test
     subject.execute_command("foo")
   end
 
+  def test_execute_commands_throw_exceptions_if_fail
+    subject = test_class.new
+    subject.execute_commands([:add_one, :add_two], true)
+
+    assert_equal [1, 2], subject.register
+  end
+
+  def test_throws_one_exception_if_should_not_break_on_failure
+    error = assert_raises Carrasco::Thor::CommandFailed do
+      test_class.new.execute_commands([:throw1, :throw2], false)
+    end
+
+    assert_equal "Failed with messages: 'throw1', 'throw2'", error.message
+  end
+
+  def test_throws_first_error_when_it_does_not_break_on_failure
+    error = assert_raises StandardError do
+      test_class.new.execute_commands([:throw1, :throw2], true)
+    end
+
+    assert_equal "throw1", error.message
+  end
+
   private
 
   def subject
     Carrasco::Thor.new
+  end
+
+  def test_class
+    Class.new(Carrasco::Thor) do
+      no_commands do
+        def register
+          @register ||= []
+        end
+
+        def add_one
+          register << 1
+        end
+
+        def add_two
+          register << 2
+        end
+
+        def throw1
+          raise "throw1"
+        end
+
+        def throw2
+          raise "throw2"
+        end
+      end
+    end
   end
 end

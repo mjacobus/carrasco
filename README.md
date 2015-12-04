@@ -49,7 +49,10 @@ commands:
 # to be implemented
 groups:
   qa:
-    desc: Runs qa tools
+    description: Runs qa tools
+    # if you want phpunit to run even if the test task fails
+    # defaults to true
+    break_on_failure: false
     commands:
       - test
       - phpunit

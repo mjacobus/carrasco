@@ -6,20 +6,24 @@ module Carrasco
       config = Thor::CoreExt::HashWithIndifferentAccess.new(config)
       klass = Class.new(Thor)
 
-      config['commands'].each do |method, options|
-        command = Command.new(method, options)
-        inject_command_into_class(command, klass)
-      end
+      build_commands(config[:commands] || [], klass)
+      build_grups(config[:groups] || [], klass)
 
       klass
     end
 
-    def inject_command_into_class(command, klass)
-      klass.desc(command.help, command.description)
-      klass.class_eval do
-        define_method(command.command_name) do
-          execute_command(command)
-        end
+    private
+
+    def build_commands(commands, klass)
+      commands.each do |method, options|
+        command = Command.new(method, options)
+        command.inject_into_class(klass)
+      end
+    end
+
+    def build_grups(groups, klass)
+      groups.each do |group_name, options|
+        Group.new(group_name, options).inject_into_class(klass)
       end
     end
   end
