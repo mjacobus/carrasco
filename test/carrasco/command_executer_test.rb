@@ -24,8 +24,8 @@ class CommandExecuter < Minitest::Test
       Carrasco::CommandExecuter.new.execute!(command)
     end
 
-    expected_message = "Command '#{script}' exited with code 2"
-    assert_equal expected_message, error.message
+    regexp = /Command '#{script}' exited with code \d/
+    assert_match regexp, error.message
   end
 
   private
