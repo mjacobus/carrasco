@@ -1,14 +1,6 @@
 require "test_helper"
 
 class CommandBuilderTest < Minitest::Test
-  def test_can_inject_command_into_class
-    klass = stub()
-    klass.expects(:desc).with("the_help", "the_description")
-    klass.expects(:class_eval)
-
-    Carrasco::CommandBuilder.new.inject_command_into_class(command, klass)
-  end
-
   def test_defines_command_in_the_class
     klass = Carrasco::CommandBuilder.new.from_config(config)
 
@@ -17,6 +9,14 @@ class CommandBuilderTest < Minitest::Test
 
   def test_from_config_creates_commands
     klass = Carrasco::CommandBuilder.new.from_config(config)
+  end
+
+  def test_does_not_break_with_empty_config
+    klass = Carrasco::CommandBuilder.new.from_config({})
+  end
+
+  def test_creates_groups
+    assert generated_class.new.respond_to?(:group1)
   end
 
   private
@@ -30,12 +30,29 @@ class CommandBuilderTest < Minitest::Test
     })
   end
 
+  def generated_class
+    Carrasco::CommandBuilder.new.from_config(config)
+  end
+
   def config
     {
       commands: {
         command1: {
           description: "desc",
           command: "ls /tmp",
+        },
+        command2: {
+          description: "desc",
+          command: "ls /tmp",
+        }
+      },
+      groups: {
+        group1: {
+          description: "command group",
+          commands: [
+            :command1,
+            :command2,
+          ]
         }
       }
     }

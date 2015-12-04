@@ -32,4 +32,29 @@ class CommandTest < Minitest::Test
   def test_command_to_string_returns_command
     command = Carrasco::Command.new "command_name", command: "command"
     assert_equal "command", command.to_s
-  end end
+  end
+
+  def test_injection_invokes_description
+    klass = stub()
+    klass.expects(:desc).with("list", "desc")
+    klass.expects(:class_eval)
+
+    command = Carrasco::Command.new(
+      "command_name",
+      help: "list",
+      description: "desc",
+      command: "ls"
+    )
+
+    command.inject_into_class(klass)
+  end
+
+  def test_can_inject_command_into_class
+    command = Carrasco::Command.new("command_name", description: "list", command: "ls")
+    klass = Class.new(Carrasco::Thor)
+
+    command.inject_into_class(klass)
+    assert klass.new.respond_to?(:command_name)
+  end
+
+end
